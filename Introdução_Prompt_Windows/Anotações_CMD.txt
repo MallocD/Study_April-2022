@@ -1,0 +1,70 @@
+\ -> Significa separação de diretório
+echo -> Escreve no (Console do) prompt de comando
+dir -> É como LS, lista todo o conteúdo dentro do diretório
+cd: Change Directory -> Troca de pasta
+mkdir -> Cria uma pasta
+move -> Move arquivos de um lugar para outro
+type -> Abre arquivos e mostra no prompt de comando
+echo "Escrita"> "Nomedoarquivo.extensão"-> Adicionar informarções e criar um arquivo injetando essas informações dentro do arquivo criado
+cd . -> Diretório atual // cd .. -> Diretório acima do atual
+copy 'NomeDoArquivo' 'NomeDaSuaCópia' -> Realiza uma cópia do arquivo desejado.
+rename 'NomDoArquivo' 'NovoNomeDoArquivo' -> Renomear um diretório ou arquivo
+del 'NomeDoArquivo' -> Deletar um arquivo
+cls -> Limpar prompt de comando
+xcopy -> Copiar pasta // Para que possa copiar todos os subdiretórios e subarquivos é necessário passar o parâmetro /e  e /y-> xcopy /e /y
+
+///////
+-> Não é possível copiar e colar dentro do prompt de comadando utilizando CTLR+C e CTRL+V
+
+///////
+---Scripts no Windows---
+
+-> A extensão do arquivo criado será .bat que vem de batch traduzido fica Lote, executa comandos em lote.
+
+-> Para utilizar um Script(Arquivo .bat) bast executar o arquivo no CMD, chamando-o pelo nome, por exemplo: limpatela.bat
+
+pause-> Aguarda usuário ter interação com o teclado antes de continuar o script
+
+///////
+
+-> Como o windows procura por executáveis no SO? Váriaveis de ambiente
+-> O comando set serve para salvar váriaveis apenas temporariamente, para salvar permanentemente é necessário utilizar o comando setx
+-> Sempre que for adicionar a linguagem a váriavel de ambiente PATH, adicionar o caminho da pasta bin
+set -> Verifica todas as váriaveis de ambientes existentes
+
+---Adicionar pastas as váriaveis de Ambiente---
+
+setx PATH "%PATH%;C:\Users\jovi3\bin" /M (/M serve para modificar várivaeis do sistema) -> Modificar a pasta PATH para incluir a pasta bin e tudo que já existe dentro do PATH
+
+---Criar variáveis de Ambiente---
+
+setx TEST "C:\Users\jovi3\TestPath"
+
+---Adicionar pastas as váriaveis de Ambiente Temporárias---
+
+echo %PATH% -> Acessar Váriaveis de Ambiente
+set PATH=%PATH%;C:\Users\jovi3\bin -> Modificar a pasta PATH para incluir a pasta bin e tudo que já existe dentro do PATH
+-> Caso deseje alterar o valor de uma váriavel de ambiente basta passar por exemplo: set PATH= "Novo Valor"
+
+---Criar variáveis de Ambiente Temporárias---
+
+set "NomeDaVáriavelDeAmbiente" = "A pasta que deseja adicionar a váriavel de ambiente" -> Serve para criar uma nova váriavel de ambiente Por exemplo : set NOVA_VARIAVELAMB = C:\Users\jovi3\Teste
+
+
+/////////
+
+----Chocolatey-------
+
+choco "nome do pacote" -> Instalar pacote
+
+
+---ComandoDoLinuxNoWindows---
+dir - ls -> Listar diretórios e arquivos
+ls -al -> Mostrar arquivos ocultos
+copy - cp -> Copiar
+move - mv -> Mover
+del - rm -> Apagar
+rmdir -> Remover Dirretório
+type - cat -> Mostrar informações de um arquivo 
+ls -al | grep "Filtro" -> Filtrar arquivos ou diretórios
+find . -> Lista todos os arquivos abaixos do diretório atual
