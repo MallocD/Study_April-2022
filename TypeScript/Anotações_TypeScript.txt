@@ -1,0 +1,19 @@
+> Em Ts todo arquivo Js é chamado de módulo(module)
+> Model (Modelo) é o modelo de algo que existe no mundo real.
+> É possível criar métodos privados no Js === Java
+
+///Em EcmaScript o # é o equivalente a private em Java > Utilizado para definir que um atributo, metodo, classe é privado
+
+//Erros que podem ocorrer em JavaScript e que no TypeScript não ocorrem :
+
+> Em casos de setar valores em atributos privados, o erro ocorre somente em RunTime, e não em tempo de escrita do código
+> Como o Js é Dinâmico, caso passemos o nome do atributo errado, o Js irá criar essa váriavel de forma dinâmica e ocasionando o erro em tempo de Runtime
+> No momento de instânciar o Js não obriga passar os parâmetros do Constructor, assim ocasionando um erro em RunTime
+> TypeScript te informa os erros em development time
+
+//Informação Conversão Ts para Js:
+
+> Os arquivos Ts devem ficar na pasta App, para que possam ser convertidos no momento da compilação para arquivo Js e criado dentro da pasta Dist, para
+que possa ser lido pelo servidor e rodar na Web
+
+//Configurar Arquivo TypeScript:
