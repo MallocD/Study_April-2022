@@ -2,7 +2,8 @@
     "compilerOptions": {
         "outDir": "dist/js",
         "target": "ES6",
-        "noEmitOnError": true
+         "noImplicitAny": true,
+        "noEmitOnError": true //Não irá aceitar conversão de um arquivo Ts para Js que possua erro
     },
     "include": ["app/**/*"]
 }
