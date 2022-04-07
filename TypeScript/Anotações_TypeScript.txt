@@ -16,4 +16,83 @@
 > Os arquivos Ts devem ficar na pasta App, para que possam ser convertidos no momento da compilação para arquivo Js e criado dentro da pasta Dist, para
 que possa ser lido pelo servidor e rodar na Web
 
-//Configurar Arquivo TypeScript:
+//Configurar Arquivos TypeScript:
+
+>Configuração no tsconfig.json:
+
+{
+    "compilerOptions": { // Configurações do compilação
+        "outDir": "dist/js", // Iremos passar o local em que será salvo os arquivos Ts convertidos para Js
+        "target": "ES6" // Indica a versão do EcmaScript desejada que se converta o Ts,
+	"noEmitOnError": true //Não irá aceitar conversão de um arquivo Ts para Js que possua  erro	
+    },
+    "include": // Iremos passar aqui as pastas que desejamos que seja convertida de Ts para Js
+ ["app/**/*"] // Irá converter todos os arquivos do diretório app e dos subdiretórios de app
+}
+
+>Configuração package.json:
+ "scripts": {
+    "server": "lite-server --baseDir=dist",
+    "start": "concurrently \"npm run watch\" \"npm run server\"", //Com o comando npm start consequentemente ativamos o comando server do script, assim compilando o litle-server e --baseDir=dist 
+    "compile": "tsc", //O script compile criado serve para que no momento de rodar o comando "compile", o script busque dentro do node-modules, o módulo do Ts que converte por baixo dos panos, Ts para Js
+    "watch": "tsc -w" //O compilador Ts irá monitorar os arquivos dentro da pasta existente dentro do includes (Modo de compilação Assistido)
+  },
+
+>Após rodar o comando compile, os arquivos convertidos de Ts para Js seram gerados dentro da pasta especificada no tsconfig, e caso haja algum erro em development time, o console irá apontar o erro
+porém ainda assim irá gerar os arquivos
+
+>Respeita a estrutura de arvores 
+
+
+///Automatizando Compilação de Arquivos
+
+>Configuração package.json:
+ 
+ "scripts": {
+    "start": "concurrently \"npm run watch\" \"npm run server\"", -> 1°
+    "watch": "tsc -w" //O compilador Ts irá monitorar os arquivos dentro da pasta existente dentro do includes (Modo de compilação Assistido) -> 2°
+  },
+
+1° -> Primeiro o concurrently, serve para que possamos rodar dois scripts em paralelo, o npm run watch será para rodarmos nosso script watch, e o npm run server, para levantarmo nossa aplicação
+
+2° -> Uma configuração que se compara ao LiveServer pois o código é salvo e compilado em tempo de execução
+
+//Encapsulamento no TypeScricpt
+
+>Em JavaScript o "_"atributo também serve como um indicador de que o atributo é privado, porém ainda é assim é possível modificar esse atributo
+>Para alterar a visibilidade para privado é utilizado o "private"
+
+/////  Revisão primeira Etapa
+
+>Encapsulamento em TypeScript é como o de Java
+
+
+
+////Segunda Parte do Curso
+
+ > É importante no momento de importar um model em Ts informar que o arquivo importado é de extensão Js, caso não informe é possível que haja erro, 
+   Nos Frameworks, não é necessário informar pois é feito por baixo dos panos a importação e a verificação de tipo
+
+//Utilizando á tipagem estática do Ts
+
+> Caso não passemos um tipo as nossas váriaveis, o Ts automaticamente detemina esse valor como tipo "any" , valor qualquer
+
+
+>Configuração no tsconfig.json:
+
+{
+    "compilerOptions": { 
+	"noImplicitAny": true // Declara que as váriaveis não podem ser do tipo "Any", assim caso o tipo da sua váriavel não for informado, irá dar erro de tipagem no momento de desenvolvimento	
+    },
+    "include": 
+ ["app/**/*"] 
+}
+
+> É uma boa prática declarar os tipos caso ele seja any, pois assim pode evitar futuros erros, caso o valor seja declarado no momento de criação da váriavel
+não é necessário passar o tipo da váriavel, depende de sua escolha, caso ache que é necessário.
+
+> Em Ts a variável é declarada da seguinte maneira "variável" : "type" = "value" 
+
+> Sempre importante declarar no método qual será seu retorno para que não haja erros no momento de passar um return e ele não ser o esperado, 
+com o tipo de retorno declarado, caso o retorno passado no bloco não seja o passado no tipo, irá dar erro em tempo de desenvolvimento, caso
+contrário o erro irá ocorrer em runtime.(Assim como é sempre declarado o retorno em Java, a diferença é que em Java, declaramos o tipo antes do método)
