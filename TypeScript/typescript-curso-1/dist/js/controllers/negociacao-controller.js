@@ -1,6 +1,8 @@
 import { Negociacao } from "../models/negociacao.js";
+import { Negociacoes } from "../models/negociacoes.js";
 export class NegociacaoController {
     constructor() {
+        this.negociacoes = new Negociacoes();
         //Recebendo os valores nos atributos criados por meio dos ID's dos inputs, assim os buscando com querySelector
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
@@ -8,6 +10,8 @@ export class NegociacaoController {
     }
     adiciona() {
         const negociacao = this.criaNegociacao();
+        this.negociacoes.adiciona(negociacao);
+        console.log(this.negociacoes.lista());
         console.log(negociacao);
         this.limparForm(); //Chama o método
     }
