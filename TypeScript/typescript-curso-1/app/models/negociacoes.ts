@@ -7,7 +7,7 @@ export class Negociacoes {
         this.negociacoes.push(negociacao)
     }
 
-    lista(): ReadonlyArray<Negociacao> {//É idêntico ao Array, a diferença é que aceita somente leitura/Não aceita ser modificado
+    lista(): readonly Negociacao[] {//É idêntico ao Array, a diferença é que aceita somente leitura/Não aceita ser modificado
         return  this.negociacoes
         // return [...this.negociacoes]//Spread Operator -> Sintaxe de Espalhamento/ Sintaxe do Js
 
