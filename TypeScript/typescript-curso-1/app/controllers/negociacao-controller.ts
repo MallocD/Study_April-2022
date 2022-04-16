@@ -1,3 +1,4 @@
+import { logarTimeExecute } from "../decorators/logar-temp-execute.js";
 import { DiaDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
@@ -20,6 +21,7 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes)
     }
 
+    @logarTimeExecute()//Utilizando um decorator
     public adiciona() : void { //Sempre importante declarar o tipo do retorno
         const negociacao = Negociacao.criaDe(
             this.inputData.value,

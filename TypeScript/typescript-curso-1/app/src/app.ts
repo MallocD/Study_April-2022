@@ -7,8 +7,8 @@
 
 //-----------------Segunda parte do Projeto--------------------
 
-import { NegociacaoController } from "./controllers/negociacao-controller.js";
-import { NegociacoesView } from "./views/negociacoes-view.js";
+import { NegociacaoController } from "controllers/negociacao-controller.js";
+import { NegociacoesView } from "views/negociacoes-view.js";
 
 const controller = new NegociacaoController()
 
