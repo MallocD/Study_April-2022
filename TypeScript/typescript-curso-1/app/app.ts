@@ -16,10 +16,13 @@ const form =  document.querySelector('.form') //Pegando o formulário por meio d
 
 //Como o form recebe um ELement, é possível adicionar um addEve... 
 //assim iremos submetar a página quando ouver um event no button ao evento do controller
+if(form)
 form.addEventListener('submit', event=>{
     event.preventDefault()
     controller.adiciona();
 })
+    else
+        throw Error("Não foi possível inicializar a aplicação verifique se o formulário foi escrito corretamente")
 
 // const negociacoesView = new NegociacoesView()
 // const template = negociacoesView.template()

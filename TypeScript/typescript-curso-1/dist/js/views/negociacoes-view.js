@@ -1,5 +1,4 @@
 import { Views } from "./views.js";
-//Forma Declarativa
 export class NegociacoesView extends Views {
     template(model) {
         return `

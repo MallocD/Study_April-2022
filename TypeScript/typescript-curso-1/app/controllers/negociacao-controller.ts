@@ -10,19 +10,22 @@ export class NegociacaoController {
     private inputQuantidade : HTMLInputElement
     private inputValor : HTMLInputElement
     private negociacoes: Negociacoes = new Negociacoes()
-    private mensagens: MensagemView = new MensagemView('#mensagemView')
+    private mensagens: MensagemView = new MensagemView('#mensagemView',true)
     private negociacoesView : NegociacoesView = new NegociacoesView('#negociacoesView')//Por enquando o valor passado no parametro tem que ser digtado corretamente, caso contrário haverá erro no console
     constructor(){        
         //Recebendo os valores nos atributos criados por meio dos ID's dos inputs, assim os buscando com querySelector
-        this.inputData = document.querySelector('#data')
-        this.inputQuantidade = document.querySelector('#quantidade')
-        this.inputValor = document.querySelector('#valor')
+        this.inputData = document.querySelector('#data') as HTMLInputElement
+        this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement
+        this.inputValor = document.querySelector('#valor') as HTMLInputElement
         this.negociacoesView.update(this.negociacoes)
     }
 
     public adiciona() : void { //Sempre importante declarar o tipo do retorno
-        
-        const negociacao = this.criaNegociacao()
+        const negociacao = Negociacao.criaDe(
+            this.inputData.value,
+            this.inputQuantidade.value,
+            this.inputValor.value
+        )
         if(!this.ehDiaUtil(negociacao.data)) {
 
             this.mensagens
@@ -41,13 +44,7 @@ export class NegociacaoController {
         return date.getDay() > DiaDaSemana.DOMINGO && date.getDay() < DiaDaSemana.SABADO
     }
 
-    private criaNegociacao() : Negociacao{
-        const exp = /-/g; //Criando uma expressão regular que verifica tudo que contem "-"  acompanhado do parametro g de global
-        const date = new Date(this.inputData.value.replace(exp,',')) // Utiliza a expressão regular e replace(troca) o "-" por ","
-        const quantidade = parseInt(this.inputQuantidade.value)//Converte o valor de string para Integer
-        const valor = parseFloat(this.inputValor.value)//Converte o valor de string para Float
-        return new Negociacao(date,quantidade,valor)
-    }
+    
 
     //Será utilizado para limpor o formulário após salvar informações inseridas após o click do Incluir
     private limparForm() : void {

@@ -5,7 +5,7 @@ export class Negociacao {
         this._valor = _valor;
     }
     get data() {
-        const data = new Date(this._data.getTime()); //Fazendo uma cópia da data para que não possa ser alterado o valor original
+        const data = new Date(this._data.getTime());
         return this._data;
     }
     get quantidade() {
@@ -16,5 +16,12 @@ export class Negociacao {
     }
     get volume() {
         return this.quantidade * this.valor;
+    }
+    static criaDe(dataString, quantidadeString, valorString) {
+        const exp = /-/g;
+        const date = new Date(dataString.replace(exp, ','));
+        const quantidade = parseInt(quantidadeString);
+        const valor = parseFloat(valorString);
+        return new Negociacao(date, quantidade, valor);
     }
 }

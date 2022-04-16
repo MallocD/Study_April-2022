@@ -3,6 +3,8 @@
         "outDir": "dist/js",
         "target": "ES6",
          "noImplicitAny": true,
+         "removeComments": true,
+         "strictNullChecks": true,
         "noEmitOnError": true //Não irá aceitar conversão de um arquivo Ts para Js que possua erro
     },
     "include": ["app/**/*"]
