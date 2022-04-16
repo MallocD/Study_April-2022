@@ -11,7 +11,7 @@ export class NegociacaoController {
     private inputValor : HTMLInputElement
     private negociacoes: Negociacoes = new Negociacoes()
     private mensagens: MensagemView = new MensagemView('#mensagemView',true)
-    private negociacoesView : NegociacoesView = new NegociacoesView('#negociacoesView')//Por enquando o valor passado no parametro tem que ser digtado corretamente, caso contrário haverá erro no console
+    private negociacoesView : NegociacoesView = new NegociacoesView('#negociacoesView')//Por enquanto o valor passado no parametro tem que ser digtado corretamente, caso contrário haverá erro no console
     constructor(){        
         //Recebendo os valores nos atributos criados por meio dos ID's dos inputs, assim os buscando com querySelector
         this.inputData = document.querySelector('#data') as HTMLInputElement
