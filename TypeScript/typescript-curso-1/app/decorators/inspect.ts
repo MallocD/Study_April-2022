@@ -12,5 +12,6 @@ export function inspect(){
             console.log(`----- retorno : ${JSON.stringify(retorno)}`)
             return retorno
         }
+        return descriptor 
     }
 }
