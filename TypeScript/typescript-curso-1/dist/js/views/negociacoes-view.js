@@ -1,8 +1,6 @@
+import { Views } from "./views.js";
 //Forma Declarativa
-export class NegociacoesView {
-    constructor(selector) {
-        this.element = document.querySelector(selector);
-    }
+export class NegociacoesView extends Views {
     template(model) {
         return `
         <table class="table table-hover table-bordered">
@@ -17,7 +15,7 @@ export class NegociacoesView {
             ${model.lista().map(negociacao => {
             return `
                     <tr>
-                        <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td>
+                        <td>${this.formatar(negociacao.data)}</td>
                         <td>${negociacao.quantidade}</td>
                         <td>${negociacao.valor}</td>
                     <tr>
@@ -27,7 +25,8 @@ export class NegociacoesView {
         </table>
         `;
     }
-    update(model) {
-        this.element.innerHTML = this.template(model);
+    formatar(data) {
+        return new Intl.DateTimeFormat()
+            .format(data);
     }
 }

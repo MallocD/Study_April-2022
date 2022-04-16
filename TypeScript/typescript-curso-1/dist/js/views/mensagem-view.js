@@ -1,14 +1,9 @@
+import { Views } from "./views.js";
 //Forma Declarativa
-export class MensagemView {
-    constructor(selector) {
-        this.element = document.querySelector(selector);
-    }
+export class MensagemView extends Views {
     template(model) {
         return `
         <p class="alert alert-info">${model}</p>
         `;
-    }
-    update(model) {
-        this.element.innerHTML = this.template(model);
     }
 }
