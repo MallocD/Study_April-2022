@@ -4,6 +4,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+import { inspect } from "../decorators/inspect.js";
 import { logarTimeExecute } from "../decorators/logar-temp-execute.js";
 import { DiaDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
@@ -13,7 +14,7 @@ import { NegociacoesView } from "../views/negociacoes-view.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
-        this.mensagens = new MensagemView('#mensagemView', true);
+        this.mensagens = new MensagemView('#mensagemView');
         this.negociacoesView = new NegociacoesView('#negociacoesView');
         this.inputData = document.querySelector('#data');
         this.inputQuantidade = document.querySelector('#quantidade');
@@ -46,5 +47,6 @@ export class NegociacaoController {
     }
 }
 __decorate([
+    inspect(),
     logarTimeExecute()
 ], NegociacaoController.prototype, "adiciona", null);

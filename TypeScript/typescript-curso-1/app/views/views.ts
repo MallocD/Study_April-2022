@@ -1,12 +1,10 @@
-import { inspect } from "../decorators/inspect.js"
-import { logarTimeExecute } from "../decorators/logar-temp-execute.js"
+
 
 export	abstract class Views<T>{
 
     protected element: HTMLElement 
-    private escapar = false
 
-    constructor(seletor:string, escapar? : boolean){
+    constructor(seletor:string){
         const element = document.querySelector(seletor)
         if(element){
 
@@ -15,20 +13,14 @@ export	abstract class Views<T>{
             throw Error(`Selector ${seletor} não existe no DOM`)
         }
         
-        if(escapar){
-            this.escapar = escapar
-        }
     }
 
     protected abstract template(model: T) : string;
 
-    @inspect()
-    @logarTimeExecute(true)
+  
     update(model: T): void  {
         let template = this.template(model)
-        if(this.escapar) {
-            template = template.replace(/<script>[\s\S]*?<\/script>/,'')
-        }
+        
         this.element.innerHTML = template
 
     }

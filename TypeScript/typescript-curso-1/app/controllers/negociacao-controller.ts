@@ -1,3 +1,4 @@
+import { inspect } from "../decorators/inspect.js";
 import { logarTimeExecute } from "../decorators/logar-temp-execute.js";
 import { DiaDaSemana } from "../enums/dias-da-semana.js";
 import { Negociacao } from "../models/negociacao.js";
@@ -11,7 +12,7 @@ export class NegociacaoController {
     private inputQuantidade : HTMLInputElement
     private inputValor : HTMLInputElement
     private negociacoes: Negociacoes = new Negociacoes()
-    private mensagens: MensagemView = new MensagemView('#mensagemView',true)
+    private mensagens: MensagemView = new MensagemView('#mensagemView')
     private negociacoesView : NegociacoesView = new NegociacoesView('#negociacoesView')//Por enquando o valor passado no parametro tem que ser digtado corretamente, caso contrário haverá erro no console
     constructor(){        
         //Recebendo os valores nos atributos criados por meio dos ID's dos inputs, assim os buscando com querySelector
@@ -21,6 +22,7 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes)
     }
 
+    @inspect()
     @logarTimeExecute()//Utilizando um decorator
     public adiciona() : void { //Sempre importante declarar o tipo do retorno
         const negociacao = Negociacao.criaDe(

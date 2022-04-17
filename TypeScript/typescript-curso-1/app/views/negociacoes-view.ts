@@ -1,9 +1,11 @@
+import { escape } from "../decorators/escape.js"
 import { Negociacoes } from "../models/negociacoes.js"
 import { Views } from "./views.js"
 
 //Forma Declarativa
 export class NegociacoesView extends Views<Negociacoes>{
 
+    @escape //Chamando decorator criado
     protected template(model: Negociacoes) : string {
         return `
         <table class="table table-hover table-bordered">
