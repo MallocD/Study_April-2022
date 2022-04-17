@@ -16,17 +16,10 @@ export class NegociacaoController {
     @domInjector('#valor')
     private inputValor : HTMLInputElement
     private negociacoes: Negociacoes = new Negociacoes()
-<<<<<<< HEAD
     private mensagens: MensagemView = new MensagemView('#mensagemView')
-=======
-    private mensagens: MensagemView = new MensagemView('#mensagemView',true)
->>>>>>> e4a92312fd89795948a991b906a3665a8f51696b
     private negociacoesView : NegociacoesView = new NegociacoesView('#negociacoesView')//Por enquanto o valor passado no parametro tem que ser digtado corretamente, caso contrário haverá erro no console
     constructor(){        
         //Recebendo os valores nos atributos criados por meio dos ID's dos inputs, assim os buscando com querySelector
-        this.inputData = document.querySelector('#data') as HTMLInputElement
-        this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement
-        this.inputValor = document.querySelector('#valor') as HTMLInputElement
         this.negociacoesView.update(this.negociacoes)
     }
 
@@ -51,6 +44,9 @@ export class NegociacaoController {
         
     }
 
+    importaDados(): void {
+        alert("Oi")
+    }
     //Método para validar se é dia útil ou não 
     private ehDiaUtil(date : Date) {
         return date.getDay() > DiaDaSemana.DOMINGO && date.getDay() < DiaDaSemana.SABADO

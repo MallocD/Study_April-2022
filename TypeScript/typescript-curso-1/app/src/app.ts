@@ -7,8 +7,8 @@
 
 //-----------------Segunda parte do Projeto--------------------
 
-import { NegociacaoController } from "controllers/negociacao-controller.js";
 import { NegociacoesView } from "views/negociacoes-view.js";
+import { NegociacaoController } from "./controllers/negociacao-controller.js";
 
 const controller = new NegociacaoController()
 
@@ -24,6 +24,15 @@ form.addEventListener('submit', event=>{
     else
         throw Error("Não foi possível inicializar a aplicação verifique se o formulário foi escrito corretamente")
 
+        const botaoImporta = document.querySelector('#botao-importa')
+
+        if(botaoImporta){
+            botaoImporta.addEventListener('click', ()=>{
+                controller.importaDados()
+            })
+        }else {
+            throw Error('Botão Importa não foi encontrado')
+        }
 // const negociacoesView = new NegociacoesView()
 // const template = negociacoesView.template()
 
