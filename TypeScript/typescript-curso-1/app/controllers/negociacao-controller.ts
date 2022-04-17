@@ -1,3 +1,4 @@
+import { domInjector } from "../decorators/dom-inejctor.js";
 import { inspect } from "../decorators/inspect.js";
 import { logarTimeExecute } from "../decorators/logar-temp-execute.js";
 import { DiaDaSemana } from "../enums/dias-da-semana.js";
@@ -8,12 +9,15 @@ import { NegociacoesView } from "../views/negociacoes-view.js";
 
 export class NegociacaoController {
     
+    @domInjector('#data')
     private inputData: HTMLInputElement
+    @domInjector('#quantidade')
     private inputQuantidade : HTMLInputElement
+    @domInjector('#valor')
     private inputValor : HTMLInputElement
     private negociacoes: Negociacoes = new Negociacoes()
     private mensagens: MensagemView = new MensagemView('#mensagemView')
-    private negociacoesView : NegociacoesView = new NegociacoesView('#negociacoesView')//Por enquando o valor passado no parametro tem que ser digtado corretamente, caso contrário haverá erro no console
+    private negociacoesView : NegociacoesView = new NegociacoesView('#negociacoesView')//Por enquanto o valor passado no parametro tem que ser digtado corretamente, caso contrário haverá erro no console
     constructor(){        
         //Recebendo os valores nos atributos criados por meio dos ID's dos inputs, assim os buscando com querySelector
         this.inputData = document.querySelector('#data') as HTMLInputElement
